@@ -147,26 +147,17 @@ public class NotificationListenerServicePlugin implements FlutterPlugin, Activit
 
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-        bool isReplied = false;
         if (requestCode == REQUEST_CODE_FOR_NOTIFICATIONS) {
             if (resultCode == Activity.RESULT_OK) {
-                isReplied = true;
                 pendingResult.success(true);
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                isReplied = true;
                 pendingResult.success(isPermissionGranted(context));
             } else {
-                isReplied = true;
-                pendingResult.success(false);
-            }
-            if (!isReplied) {
                 pendingResult.success(false);
             }
             return true;
         }
-        if (!isReplied) {
-            pendingResult.success(false);
-        }
+        pendingResult.success(false);
         return false;
     }
 }
