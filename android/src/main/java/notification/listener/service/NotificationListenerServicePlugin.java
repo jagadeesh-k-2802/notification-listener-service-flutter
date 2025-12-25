@@ -157,7 +157,6 @@ public class NotificationListenerServicePlugin implements FlutterPlugin, Activit
             }
             return true;
         }
-        pendingResult.success(false);
         return false;
     }
 }
